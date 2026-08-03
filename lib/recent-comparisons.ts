@@ -1,6 +1,6 @@
 import type { ComparisonInputs } from "@/lib/comparison-state";
 
-const STORAGE_KEY = "wealth-wiser:recent-comparisons";
+const STORAGE_KEY = "what-if-invest:recent-comparisons";
 const MAX_ENTRIES = 5;
 const EMPTY: RecentComparison[] = [];
 

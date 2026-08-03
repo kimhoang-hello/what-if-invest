@@ -23,7 +23,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Wealth Wiser — Compare ETFs, see who wins",
+  title: "What If Invest — Compare ETFs, see who wins",
   description:
     "Compare how two ETFs would have performed under the same dollar-cost-averaging strategy. Built for beginner investors.",
 };

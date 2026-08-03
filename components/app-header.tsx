@@ -8,7 +8,7 @@ export function AppHeader() {
         <span className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-etf-a to-etf-b text-white">
           <TrendingUp className="size-4" />
         </span>
-        <span className="font-heading text-lg font-semibold">Wealth Wiser</span>
+        <span className="font-heading text-lg font-semibold">What If Invest</span>
       </div>
       <ThemeToggle />
     </header>
