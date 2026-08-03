@@ -5,6 +5,13 @@ export interface PricePoint {
   close: number;
 }
 
+export type DataSource = "real" | "mock";
+
+export interface PriceHistory {
+  points: PricePoint[];
+  source: DataSource;
+}
+
 export interface PriceProvider {
-  getHistory(ticker: string): Promise<PricePoint[]>;
+  getHistory(ticker: string): Promise<PriceHistory>;
 }

@@ -1,9 +1,10 @@
 import useSWR from "swr";
-import type { PricePoint } from "@/lib/data/types";
+import type { DataSource, PricePoint } from "@/lib/data/types";
 
 interface PricesResponse {
   ticker: string;
   prices: PricePoint[];
+  source: DataSource;
 }
 
 async function fetcher(url: string): Promise<PricesResponse> {
@@ -24,6 +25,7 @@ export function useEtfPrices(ticker: string | null) {
 
   return {
     prices: data?.prices ?? null,
+    source: data?.source,
     isLoading,
     error: error as Error | undefined,
     retry: () => mutate(),

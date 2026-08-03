@@ -18,6 +18,8 @@ export interface EtfMeta {
   assetType: AssetType;
   /** Approximate real-world inception date, used to size the mock history and demo overlap-clamping */
   launchDate: string;
+  /** Trading venue for real-data lookups (e.g. Twelve Data's `exchange` param). Omitted = primary US exchange. */
+  exchange?: string;
 }
 
 export const ETF_LIST: EtfMeta[] = [
@@ -33,12 +35,12 @@ export const ETF_LIST: EtfMeta[] = [
   { ticker: "VWO", name: "Vanguard FTSE Emerging Markets ETF", category: "emerging-markets", assetType: "etf", launchDate: "2005-03-04" },
   { ticker: "BND", name: "Vanguard Total Bond Market ETF", category: "bonds", assetType: "etf", launchDate: "2007-04-03" },
   { ticker: "AGG", name: "iShares Core U.S. Aggregate Bond ETF", category: "bonds", assetType: "etf", launchDate: "2003-09-22" },
-  { ticker: "XEQT", name: "iShares Core Equity ETF Portfolio", category: "ca-all-equity", assetType: "etf", launchDate: "2019-08-07" },
-  { ticker: "VEQT", name: "Vanguard All-Equity ETF Portfolio", category: "ca-all-equity", assetType: "etf", launchDate: "2019-01-29" },
-  { ticker: "XGRO", name: "iShares Core Growth ETF Portfolio", category: "ca-growth-allocation", assetType: "etf", launchDate: "2018-01-25" },
-  { ticker: "VGRO", name: "Vanguard Growth ETF Portfolio", category: "ca-growth-allocation", assetType: "etf", launchDate: "2018-01-25" },
-  { ticker: "XBAL", name: "iShares Core Balanced ETF Portfolio", category: "ca-balanced-allocation", assetType: "etf", launchDate: "2018-01-25" },
-  { ticker: "VBAL", name: "Vanguard Balanced ETF Portfolio", category: "ca-balanced-allocation", assetType: "etf", launchDate: "2018-01-25" },
+  { ticker: "XEQT", name: "iShares Core Equity ETF Portfolio", category: "ca-all-equity", assetType: "etf", launchDate: "2019-08-07", exchange: "TSX" },
+  { ticker: "VEQT", name: "Vanguard All-Equity ETF Portfolio", category: "ca-all-equity", assetType: "etf", launchDate: "2019-01-29", exchange: "TSX" },
+  { ticker: "XGRO", name: "iShares Core Growth ETF Portfolio", category: "ca-growth-allocation", assetType: "etf", launchDate: "2018-01-25", exchange: "TSX" },
+  { ticker: "VGRO", name: "Vanguard Growth ETF Portfolio", category: "ca-growth-allocation", assetType: "etf", launchDate: "2018-01-25", exchange: "TSX" },
+  { ticker: "XBAL", name: "iShares Core Balanced ETF Portfolio", category: "ca-balanced-allocation", assetType: "etf", launchDate: "2018-01-25", exchange: "TSX" },
+  { ticker: "VBAL", name: "Vanguard Balanced ETF Portfolio", category: "ca-balanced-allocation", assetType: "etf", launchDate: "2018-01-25", exchange: "TSX" },
 
   // Mutual funds — selectable only for ETF/Mutual Fund #2, so a beginner can
   // compare a low-cost ETF against the equivalent mutual fund share class.

@@ -17,7 +17,7 @@ import { computeReturns } from "@/lib/calculations/returns";
 import { compareResults } from "@/lib/calculations/compare";
 import { getEtfMeta, ETF_LIST, ETF_ONLY_LIST } from "@/lib/data/etf-list";
 import { AppHeader } from "@/components/app-header";
-import { DemoDataBanner } from "@/components/demo-data-banner";
+import { DataSourceNote } from "@/components/data-source-note";
 import { InvestmentForm } from "@/components/investment-form";
 import { ResultsSummary } from "@/components/results-summary";
 import { ComparisonBanner } from "@/components/comparison-banner";
@@ -67,8 +67,8 @@ export function ComparisonApp() {
   const sameTicker = inputs.etfA === inputs.etfB;
   const invalidInitial = !(inputs.initialInvestment > 0);
 
-  const { prices: pricesA, isLoading: loadingA, error: errorA, retry: retryA } = useEtfPrices(inputs.etfA);
-  const { prices: pricesB, isLoading: loadingB, error: errorB, retry: retryB } = useEtfPrices(inputs.etfB);
+  const { prices: pricesA, source: sourceA, isLoading: loadingA, error: errorA, retry: retryA } = useEtfPrices(inputs.etfA);
+  const { prices: pricesB, source: sourceB, isLoading: loadingB, error: errorB, retry: retryB } = useEtfPrices(inputs.etfB);
 
   const canCompute = !sameTicker && !invalidInitial && !!pricesA && !!pricesB;
 
@@ -138,7 +138,7 @@ export function ComparisonApp() {
         <p className="max-w-md text-muted-foreground">
           Pick two ETFs and an investing habit — we&apos;ll simulate dollar-cost averaging into both and show you the difference.
         </p>
-        <DemoDataBanner />
+        <DataSourceNote />
       </div>
 
       <Card className="rounded-3xl">
@@ -200,6 +200,7 @@ export function ComparisonApp() {
               accent="a"
               metrics={computed.metricsA}
               isWinner={computed.comparison.winnerTicker === inputs.etfA}
+              source={sourceA}
             />
             <ResultsSummary
               ticker={inputs.etfB}
@@ -207,6 +208,7 @@ export function ComparisonApp() {
               accent="b"
               metrics={computed.metricsB}
               isWinner={computed.comparison.winnerTicker === inputs.etfB}
+              source={sourceB}
             />
           </div>
 
@@ -238,8 +240,9 @@ export function ComparisonApp() {
       )}
 
       <footer className="mt-4 border-t border-border pt-6 text-xs text-muted-foreground">
-        What If Invest is an educational tool. Prices shown are simulated for demo purposes, not real market data, and
-        nothing here is investment advice. Past performance never guarantees future results — even when it&apos;s real.
+        What If Invest is an educational tool. Prices come from Twelve Data where available, with simulated data as a
+        fallback for funds it doesn&apos;t cover — see the &quot;Simulated&quot; tag above when that applies. Nothing
+        here is investment advice. Past performance never guarantees future results — even when it&apos;s real.
       </footer>
     </div>
   );

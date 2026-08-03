@@ -1,5 +1,6 @@
 import { Trophy } from "lucide-react";
 import type { ReturnMetrics } from "@/lib/calculations/types";
+import type { DataSource } from "@/lib/data/types";
 import { formatCurrency, formatMultiple, formatNumber, formatPercent } from "@/lib/format";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,9 +12,10 @@ interface ResultsSummaryProps {
   accent: "a" | "b";
   metrics: ReturnMetrics;
   isWinner: boolean;
+  source?: DataSource;
 }
 
-export function ResultsSummary({ ticker, name, accent, metrics, isWinner }: ResultsSummaryProps) {
+export function ResultsSummary({ ticker, name, accent, metrics, isWinner, source }: ResultsSummaryProps) {
   const accentBorder = accent === "a" ? "border-t-etf-a" : "border-t-etf-b";
   const accentBg = accent === "a" ? "bg-etf-a" : "bg-etf-b";
 
@@ -28,6 +30,11 @@ export function ResultsSummary({ ticker, name, accent, metrics, isWinner }: Resu
               <Badge className="gap-1 border-none bg-winner/15 text-winner">
                 <Trophy className="size-3" />
                 Winner
+              </Badge>
+            )}
+            {source === "mock" && (
+              <Badge variant="outline" className="text-muted-foreground">
+                Simulated
               </Badge>
             )}
           </div>

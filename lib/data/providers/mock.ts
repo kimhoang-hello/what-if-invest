@@ -1,12 +1,13 @@
-import type { PriceProvider, PricePoint } from "@/lib/data/types";
+import type { PriceProvider, PriceHistory, PricePoint } from "@/lib/data/types";
 import { getEtfMeta, type EtfCategory } from "@/lib/data/etf-list";
 
 /**
- * No live data vendor is wired up yet (Stooq/Yahoo's free endpoints are not
- * reachable server-side — see plan notes). This provider generates a
- * deterministic, per-ticker geometric random walk so the rest of the app can
- * be built and demoed. It implements the same PriceProvider interface as a
- * real vendor would, so swapping one in later is a one-file change.
+ * Stooq/Yahoo's free endpoints aren't reachable server-side (see plan notes),
+ * and some tickers (e.g. TD's e-Series mutual funds) aren't carried by any
+ * commercial data vendor at all. This provider generates a deterministic,
+ * per-ticker geometric random walk so those cases — and local dev with no API
+ * key configured — still work. It implements the same PriceProvider interface
+ * as a real vendor, and TwelveDataPriceProvider falls back to it per-ticker.
  */
 
 const TRADING_DAYS_PER_YEAR = 252;
@@ -86,11 +87,11 @@ function generateMockSeries(ticker: string, launchDate: string, category: EtfCat
 }
 
 export class MockPriceProvider implements PriceProvider {
-  async getHistory(ticker: string): Promise<PricePoint[]> {
+  async getHistory(ticker: string): Promise<PriceHistory> {
     const meta = getEtfMeta(ticker);
     if (!meta) {
       throw new Error(`Unknown ticker: ${ticker}`);
     }
-    return generateMockSeries(meta.ticker, meta.launchDate, meta.category);
+    return { points: generateMockSeries(meta.ticker, meta.launchDate, meta.category), source: "mock" };
   }
 }
