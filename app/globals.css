@@ -80,6 +80,12 @@
   --etf-a: #6d5ef5;
   --etf-b: #f2994a;
   --winner: #16a34a;
+  /* Validated 5-slot categorical set for asset-class breakdowns (fund composition) — a distinct role from etf-a/etf-b, which identify a fund, not an asset class. */
+  --cat-1: #2a78d6;
+  --cat-2: #eb6834;
+  --cat-3: #1baf7a;
+  --cat-4: #eda100;
+  --cat-5: #e87ba4;
   --radius: 1rem;
   --sidebar: #fafafc;
   --sidebar-foreground: #14151f;
@@ -118,6 +124,11 @@
   --etf-a: #8b7cfa;
   --etf-b: #f5a65c;
   --winner: #34d399;
+  --cat-1: #3987e5;
+  --cat-2: #d95926;
+  --cat-3: #199e70;
+  --cat-4: #c98500;
+  --cat-5: #d55181;
   --sidebar: #0b0b14;
   --sidebar-foreground: #ededf5;
   --sidebar-primary: #8b7cfa;

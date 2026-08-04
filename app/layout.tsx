@@ -3,6 +3,8 @@ import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
+import { AppHeader } from "@/components/app-header";
+import { AppFooter } from "@/components/app-footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -38,7 +40,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <TooltipProvider>
-            {children}
+            <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
+              <AppHeader />
+              <main className="flex flex-1 flex-col gap-8">{children}</main>
+              <AppFooter />
+            </div>
             <Toaster />
           </TooltipProvider>
         </ThemeProvider>

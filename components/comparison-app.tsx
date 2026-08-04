@@ -16,7 +16,6 @@ import { simulatePortfolio } from "@/lib/calculations/simulate-portfolio";
 import { computeReturns } from "@/lib/calculations/returns";
 import { compareResults } from "@/lib/calculations/compare";
 import { getEtfMeta, ETF_LIST, ETF_ONLY_LIST } from "@/lib/data/etf-list";
-import { AppHeader } from "@/components/app-header";
 import { DataSourceNote } from "@/components/data-source-note";
 import { InvestmentForm } from "@/components/investment-form";
 import { ResultsSummary } from "@/components/results-summary";
@@ -126,9 +125,7 @@ export function ComparisonApp() {
   const metaB = getEtfMeta(inputs.etfB);
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-8 px-4 py-8 sm:px-6 sm:py-12">
-      <AppHeader />
-
+    <>
       <div className="flex flex-col gap-3">
         <h1 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl">
           Compare two ETFs.
@@ -238,13 +235,7 @@ export function ComparisonApp() {
           </div>
         </div>
       )}
-
-      <footer className="mt-4 border-t border-border pt-6 text-xs text-muted-foreground">
-        What If Invest is an educational tool. Prices come from Twelve Data where available, with simulated data as a
-        fallback for funds it doesn&apos;t cover — see the &quot;Simulated&quot; tag above when that applies. Nothing
-        here is investment advice. Past performance never guarantees future results — even when it&apos;s real.
-      </footer>
-    </div>
+    </>
   );
 }
 
