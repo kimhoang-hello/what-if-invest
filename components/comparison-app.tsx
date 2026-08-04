@@ -127,10 +127,10 @@ export function ComparisonApp() {
   return (
     <>
       <div className="flex flex-col gap-3">
-        <h1 className="max-w-md font-heading text-4xl font-semibold leading-tight sm:text-5xl">
+        <h1 className="max-w-xl font-heading text-4xl font-semibold leading-tight sm:text-5xl">
           What if you&apos;d invested in the other fund?
         </h1>
-        <p className="max-w-md text-muted-foreground">
+        <p className="max-w-lg text-muted-foreground">
           Pick two Canadian ETFs or mutual funds and an investing habit — we&apos;ll simulate dollar-cost averaging
           into both, so you can see who really would have won.
         </p>
