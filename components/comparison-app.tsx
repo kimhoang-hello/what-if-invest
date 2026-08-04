@@ -127,13 +127,12 @@ export function ComparisonApp() {
   return (
     <>
       <div className="flex flex-col gap-3">
-        <h1 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl">
-          Compare two ETFs.
-          <br />
-          See who wins.
+        <h1 className="max-w-md font-heading text-4xl font-semibold leading-tight sm:text-5xl">
+          What if you&apos;d invested in the other fund?
         </h1>
         <p className="max-w-md text-muted-foreground">
-          Pick two ETFs and an investing habit — we&apos;ll simulate dollar-cost averaging into both and show you the difference.
+          Pick two Canadian ETFs or mutual funds and an investing habit — we&apos;ll simulate dollar-cost averaging
+          into both, so you can see who really would have won.
         </p>
         <DataSourceNote />
       </div>
@@ -162,7 +161,7 @@ export function ComparisonApp() {
       )}
 
       {sameTicker && (
-        <InlineNotice text="Pick two different ETFs to compare." />
+        <InlineNotice text="Pick two different funds to compare." />
       )}
       {invalidInitial && !sameTicker && (
         <InlineNotice text="Enter an initial investment greater than $0." />

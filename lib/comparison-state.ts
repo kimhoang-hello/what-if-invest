@@ -12,8 +12,8 @@ export interface ComparisonInputs {
 }
 
 export const DEFAULT_INPUTS: ComparisonInputs = {
-  etfA: "VOO",
-  etfB: "XEQT",
+  etfA: "XEQT",
+  etfB: "TDB900",
   initialInvestment: 10000,
   contributionAmount: 500,
   frequency: "monthly",

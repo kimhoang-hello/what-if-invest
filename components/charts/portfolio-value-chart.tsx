@@ -138,10 +138,11 @@ export function PortfolioValueChart({ simA, simB, tickerA, tickerB }: PortfolioV
               isAnimationActive
             />
             <Brush
+              className="chart-brush"
               dataKey="date"
               height={28}
               travellerWidth={12}
-              stroke="var(--muted-foreground)"
+              stroke="var(--primary)"
               fill="var(--muted)"
               tickFormatter={formatAxisDate}
               traveller={BrushHandle}

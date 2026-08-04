@@ -2,24 +2,24 @@ import type { PriceProvider, PriceHistory, PricePoint } from "@/lib/data/types";
 import { getEtfMeta, type EtfCategory } from "@/lib/data/etf-list";
 
 /**
- * Stooq/Yahoo's free endpoints aren't reachable server-side (see plan notes),
- * and some tickers (e.g. TD's e-Series mutual funds) aren't carried by any
- * commercial data vendor at all. This provider generates a deterministic,
- * per-ticker geometric random walk so those cases — and local dev with no API
- * key configured — still work. It implements the same PriceProvider interface
- * as a real vendor, and TwelveDataPriceProvider falls back to it per-ticker.
+ * No live price data vendor is wired up: every fund here is TSX-listed or a
+ * TD e-Series mutual fund, and neither is covered by a free-tier market data
+ * API. This provider generates a deterministic, per-ticker geometric random
+ * walk so the app still works end to end. It implements the same
+ * PriceProvider interface a real vendor would, so swapping one in later
+ * (lib/data/providers/) is a one-file change — see lib/data/index.ts.
  */
 
 const TRADING_DAYS_PER_YEAR = 252;
 const START_PRICE = 50;
 
 const CATEGORY_PARAMS: Record<EtfCategory, { annualDrift: number; annualVol: number }> = {
-  "us-broad-equity": { annualDrift: 0.1, annualVol: 0.15 },
-  "us-growth": { annualDrift: 0.14, annualVol: 0.22 },
-  "us-dividend": { annualDrift: 0.09, annualVol: 0.14 },
-  "international-developed": { annualDrift: 0.06, annualVol: 0.16 },
+  "ca-equity": { annualDrift: 0.07, annualVol: 0.16 },
+  "us-equity": { annualDrift: 0.1, annualVol: 0.17 },
+  "international-equity": { annualDrift: 0.06, annualVol: 0.16 },
   "emerging-markets": { annualDrift: 0.05, annualVol: 0.2 },
   bonds: { annualDrift: 0.025, annualVol: 0.05 },
+  dividend: { annualDrift: 0.075, annualVol: 0.14 },
   "ca-all-equity": { annualDrift: 0.09, annualVol: 0.15 },
   "ca-growth-allocation": { annualDrift: 0.07, annualVol: 0.11 },
   "ca-balanced-allocation": { annualDrift: 0.055, annualVol: 0.08 },

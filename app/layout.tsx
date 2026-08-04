@@ -25,9 +25,9 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "What If Invest — Compare ETFs, see who wins",
+  title: "What If Invest — Compare Canadian ETFs & funds, see who wins",
   description:
-    "Compare how two ETFs would have performed under the same dollar-cost-averaging strategy. Built for beginner investors.",
+    "Compare how two Canadian ETFs or mutual funds would have performed under the same dollar-cost-averaging strategy. Built for beginner investors.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

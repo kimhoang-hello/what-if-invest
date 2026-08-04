@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { TrendingUp } from "lucide-react";
+import { Percent, TrendingUp } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { ResourcesMenu } from "@/components/resources-menu";
+import { Button } from "@/components/ui/button";
 
 export function AppHeader() {
   return (
@@ -12,8 +12,13 @@ export function AppHeader() {
         </span>
         <span className="font-heading text-lg font-semibold">What If Invest</span>
       </Link>
-      <div className="flex items-center gap-1">
-        <ResourcesMenu />
+      <div className="flex items-center gap-2">
+        <Button asChild variant="secondary" size="sm" className="gap-1.5 rounded-full font-medium">
+          <Link href="/resources/what-is-mer">
+            <Percent className="size-3.5" />
+            What Is MER?
+          </Link>
+        </Button>
         <ThemeToggle />
       </div>
     </header>

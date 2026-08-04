@@ -15,7 +15,6 @@ export default function WhatIsMerPage() {
       <BackLink />
 
       <div className="flex flex-col gap-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary">Resources</p>
         <h1 className="font-heading text-4xl font-semibold leading-tight sm:text-5xl">What is MER?</h1>
         <p className="max-w-xl text-muted-foreground">
           MER stands for Management Expense Ratio — the yearly fee a fund charges you to manage your money, taken

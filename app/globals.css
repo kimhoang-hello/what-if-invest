@@ -139,6 +139,21 @@
   --sidebar-ring: #8b7cfa;
 }
 
+/* Recharts' Brush has no rx/shadow props — round the plain rects it renders
+   and give the whole control a soft lift so it matches the app's pill/card
+   language instead of looking like a bare HTML range input. */
+.chart-brush {
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.08));
+}
+.chart-brush > rect:first-child {
+  rx: 10px;
+  ry: 10px;
+}
+.chart-brush .recharts-brush-slide {
+  rx: 10px;
+  ry: 10px;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
